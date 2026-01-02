@@ -1,4 +1,4 @@
-package actions;
+package api_actions;
 
 import base.RequestSpec;
 import io.restassured.response.Response;

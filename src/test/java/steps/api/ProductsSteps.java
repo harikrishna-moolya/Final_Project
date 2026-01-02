@@ -72,9 +72,9 @@ public class ProductsSteps {
 */
 package steps.api;
 
-import actions.ProductAPI;
+import api_actions.ProductAPI;
 import io.cucumber.java.en.When;
-import logger.LoggerClass;
+import utils.LoggerClass;
 import org.apache.logging.log4j.Logger;
 
 import static steps.api.CommonSteps.response;

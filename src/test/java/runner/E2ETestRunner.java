@@ -20,7 +20,8 @@ import io.cucumber.testng.CucumberOptions;
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/e2e.html",
-                "json:target/cucumber-reports/e2e.json"
+                "json:target/cucumber-reports/e2e.json",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         },
         monochrome = true
 )

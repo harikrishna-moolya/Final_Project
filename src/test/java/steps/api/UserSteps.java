@@ -47,9 +47,9 @@ public class UserSteps {
 */
 package steps.api;
 
-import actions.UserAPI;
+import api_actions.UserAPI;
 import io.cucumber.java.en.When;
-import logger.LoggerClass;
+import utils.LoggerClass;
 import org.apache.logging.log4j.Logger;
 
 public class UserSteps {

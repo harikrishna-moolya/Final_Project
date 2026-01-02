@@ -25,7 +25,7 @@ package hooks;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.After;
-import logger.LoggerClass;
+import utils.LoggerClass;
 import org.apache.logging.log4j.Logger;
 
 public class Hooks {

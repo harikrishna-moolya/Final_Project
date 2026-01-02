@@ -1,8 +1,8 @@
 package steps.api;
 
-import actions.AccountAPI;
+import api_actions.AccountAPI;
 import io.cucumber.java.en.When;
-import logger.LoggerClass;
+import utils.LoggerClass;
 import org.apache.logging.log4j.Logger;
 
 public class AccountSteps {

@@ -7,7 +7,8 @@ import io.cucumber.testng.CucumberOptions;
         tags = "@UI",
         features = "src/main/resources/features/ui",
         glue = { "steps.ui", "ui.hooks" },
-        plugin = {"pretty", "html:target/ui-report.html"}
+        plugin = {"pretty", "html:target/ui-report.html",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
 )
 public class UiRunner extends AbstractTestNGCucumberTests {
 }
