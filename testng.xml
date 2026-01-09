@@ -4,11 +4,10 @@
 
     <test name="E2E Tests">
         <classes>  
-            <class name="runner.IntegrationTestRunner"/>
-            <class name="runner.E2ETestRunner"/>
             <class name="runner.UiRunner"/>
             <class name="runner.TestRunner"/>
-          
+            <class name="runner.IntegrationTestRunner"/>
+            <class name="runner.E2ETestRunner"/>
             
         </classes>
     </test>
