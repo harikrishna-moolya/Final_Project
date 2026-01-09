@@ -3,11 +3,12 @@
 <suite name="E2E Suite" verbose="1">
 
     <test name="E2E Tests">
-        <classes>
-            <class name="runner.UiRunner"/>
-            <class name="runner.TestRunner"/>
+        <classes>  
             <class name="runner.IntegrationTestRunner"/>
             <class name="runner.E2ETestRunner"/>
+            <class name="runner.UiRunner"/>
+            <class name="runner.TestRunner"/>
+          
             
         </classes>
     </test>
