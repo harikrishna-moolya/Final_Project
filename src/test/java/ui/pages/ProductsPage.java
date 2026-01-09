@@ -278,16 +278,40 @@ public class ProductsPage {
     // --------------------------
     // PRODUCT OPERATIONS
     // --------------------------
-    public void addFirstProductToCart() {
-        hideAds();
+   public void addFirstProductToCart() {
 
-        WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(addFirstProduct));
+    hideAds();
 
-        js().executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
-        js().executeScript("arguments[0].click();", btn);
+    WebElement addBtn = wait.until(
+        ExpectedConditions.presenceOfElementLocated(
+            By.xpath("(//a[contains(@class,'add-to-cart')])[1]")
+        )
+    );
 
-        hideAds();
-    }
+    // Scroll into view (CRITICAL)
+    ((JavascriptExecutor) driver).executeScript(
+        "arguments[0].scrollIntoView({block:'center'});", addBtn
+    );
+
+    // Small wait for animation to settle
+    wait.until(ExpectedConditions.elementToBeClickable(addBtn));
+
+    // JS click (MANDATORY for CI)
+    ((JavascriptExecutor) driver).executeScript(
+        "arguments[0].click();", addBtn
+    );
+
+    // Wait until cart count updates OR success message
+    wait.until(ExpectedConditions.or(
+        ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//a[contains(text(),'View Cart')]")
+        ),
+        ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//span[@class='cart-count' and text()!='0']")
+        )
+    ));
+}
+
 
     public void clickContinueShopping() {
         hideAds();
