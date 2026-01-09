@@ -57,15 +57,26 @@ public class CheckoutUISteps {
     // --------------------------------------
     // ⭐ NEW STEP: Validate checkout page
     // --------------------------------------
-    @Then("I should be on checkout page")
-    public void verifyCheckoutPage() {
-        boolean urlMatched = checkout.isCheckoutPageReached();
-        boolean contentMatched = checkout.isCheckoutContentVisible();
+@Then("I should be on checkout page")
+public void verifyCheckoutPage() {
 
-        if (!urlMatched && !contentMatched) {
-            throw new AssertionError("FAILED: Not redirected to checkout page!");
-        }
+    boolean checkoutUrl = checkout.isCheckoutPageReached();
+    boolean checkoutContent = checkout.isCheckoutContentVisible();
+    boolean loginPopup = checkout.isLoginPopupVisible();
+
+    if (loginPopup) {
+        throw new AssertionError(
+            "FAILED: Redirected to Login popup instead of Checkout page"
+        );
     }
+
+    if (!checkoutUrl && !checkoutContent) {
+        throw new AssertionError(
+            "FAILED: Not redirected to checkout page!"
+        );
+    }
+}
+
     @Then("I should see login popup on checkout")
     public void verifyLoginPopupVisible() {
         boolean popupVisible = checkout.isLoginPopupVisible();
