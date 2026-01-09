@@ -11,7 +11,8 @@ public class ProductsPage {
     private WebDriverWait wait;
 
     private By addFirstProduct = By.xpath("(//a[contains(@class,'add-to-cart')])[1]");
-    private By continueShoppingBtn = By.xpath("//button[contains(text(),'Continue Shopping')]");
+      private By continueShoppingBtn =
+          By.xpath("//button[contains(@class,'btn-success') and contains(text(),'Continue')]");
     private By cartBtn = By.xpath("//a[contains(text(),'Cart')]");
     private By productItems = By.cssSelector(".product-image-wrapper");
 
