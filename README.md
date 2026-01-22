@@ -127,24 +127,20 @@ FINAL_PROJECT
             │   ├── AccountAPI
             │   ├── ProductAPI
             │   └── UserAPI
-            │
-            ├── base
-            │   ├── BaseTest
-            │   ├── ConfigReader
-            │   └── RequestSpec
-            │
+            |
             ├── hooks
+            |   ├── BaseTest
             │   ├── ApiSetup
             │   └── Hooks
             │
             ├── utils
-            │   └── LoggerClass
+            │   ├── LoggerClass
+            |   ├── ConfigReader
+            |   ├── RequestSpec
+            |   └── ScreenshotUtil
             │
             ├── runner
-            │   ├── E2ETestRunner
-            │   ├── IntegrationTestRunner
-            │   ├── TestRunner
-            │   └── UiRunner
+            │   └── FinalTestRunner
             │
             ├── steps
             │   ├── api
@@ -164,8 +160,6 @@ FINAL_PROJECT
                 ├── driver
                 │   └── DriverFactory
                 │
-                ├── hooks
-                │   └── UIHooks
                 │
                 └── pages
                     ├── CartPage
