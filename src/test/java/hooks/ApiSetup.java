@@ -1,18 +1,4 @@
-/*
-package hooks;
 
-import io.cucumber.java.Before;
-import io.restassured.RestAssured;
-
-public class ApiSetup {
-
-    @Before(order = 0)
-    public void setup() {
-        RestAssured.baseURI = "https://automationexercise.com";
-        System.out.println(">>> Base URI Set: " + RestAssured.baseURI);
-    }
-}
-*/
 package hooks;
 
 import io.cucumber.java.Before;
