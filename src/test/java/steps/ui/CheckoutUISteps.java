@@ -1,28 +1,4 @@
-/*
-package steps.ui;
 
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import org.openqa.selenium.WebDriver;
-import ui.driver.DriverFactory;
-import ui.pages.CheckoutPage;
-
-public class CheckoutUISteps {
-
-    WebDriver driver = DriverFactory.getDriver();
-    CheckoutPage checkout = new CheckoutPage(driver);
-
-    @And("I choose to login from checkout page")
-    public void chooseToLoginFromCheckout() {
-        checkout.clickLoginFromPopup();
-    }
-
-    @Then("I should reach homepage after login")
-    public void verifyHomepageAfterLogin() {
-        checkout.verifyHomeReached();
-    }
-}
-*/
 package steps.ui;
 
 import io.cucumber.java.en.And;
