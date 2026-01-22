@@ -111,6 +111,7 @@ package ui.pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 import java.time.Duration;
+import utils.ConfigReader;
 
 public class LoginPage {
 
@@ -127,7 +128,7 @@ public class LoginPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(12));
     }
 
-    // SAME STYLE AS Product Page – hide ads fully
+    // Hide ads / popups
     private void hideAds() {
         ((JavascriptExecutor) driver).executeScript(
                 "document.querySelectorAll('iframe, .adsbygoogle, #ad_position_box, .modal, .popup, .modal-backdrop')" +
@@ -136,7 +137,8 @@ public class LoginPage {
     }
 
     public void openSite() {
-        driver.get("https://automationexercise.com/login");
+        String baseUrl = ConfigReader.get("base.uri");
+        driver.get(baseUrl + "/login");
         hideAds();
     }
 
@@ -179,29 +181,24 @@ public class LoginPage {
     public boolean isEmailFieldInvalid() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElement email = driver.findElement(emailBox);
-
         return !(Boolean) js.executeScript("return arguments[0].checkValidity();", email);
     }
 
     public boolean isPasswordFieldInvalid() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElement pass = driver.findElement(passwordBox);
-
         return !(Boolean) js.executeScript("return arguments[0].checkValidity();", pass);
     }
 
     public String getEmailValidationMessage() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElement email = driver.findElement(emailBox);
-
         return (String) js.executeScript("return arguments[0].validationMessage;", email);
     }
 
     public String getPasswordValidationMessage() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElement pass = driver.findElement(passwordBox);
-
         return (String) js.executeScript("return arguments[0].validationMessage;", pass);
     }
-
 }

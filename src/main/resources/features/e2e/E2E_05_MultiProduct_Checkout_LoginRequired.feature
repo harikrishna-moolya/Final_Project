@@ -1,10 +1,10 @@
 @e2e
 Feature: Multi-product cart checkout requires login
 
-  Scenario: Adding multiple products and attempting checkout as guest forces login
-    When I get user details using email "hk18@gmail.com"
-    Then the status code should be 404
-    And the response should contain "Account not found"
+  Scenario Outline: Adding multiple products and attempting checkout as guest forces login
+    When I get user details using email "<email>"
+    Then the status code should be <statusCode>
+    And the response should contain "<apiMessage>"
 
     When I go to products page
     And I add first product to cart
@@ -17,3 +17,7 @@ Feature: Multi-product cart checkout requires login
     When I click checkout on cart page
     And I choose to login from checkout page
     Then I am on login page
+
+    Examples:
+      | email          | statusCode | apiMessage        |
+      | hk18@gmail.com | 404        | Account not found |

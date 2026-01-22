@@ -18,7 +18,7 @@ package hooks;
 import io.cucumber.java.Before;
 import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
-import base.ConfigReader;
+import utils.ConfigReader;
 
 public class ApiSetup {
 

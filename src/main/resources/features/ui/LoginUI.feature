@@ -1,34 +1,52 @@
 @UI
 Feature: Login UI
 
-  Scenario: Login successfully
+  Scenario Outline: Successful login
     Given I am on login page
-    When I enter login email "hk18@gmail.com"
-    And I enter login password "Hari@0577"
+    When I enter login email "<email>"
+    And I enter login password "<password>"
     And I click login button
     Then I should be redirected to homepage
-# Adding New Features
+
+    Examples:
+      | email          | password   |
+      | hk18@gmail.com | Hari@0577  |
+
+
   @UI
-  Scenario: Login with incorrect password
+  Scenario Outline: Login with incorrect password
     Given I am on login page
-    When I enter login email "hk18@gmail.com"
-    And I enter login password "WrongPass123"
+    When I enter login email "<email>"
+    And I enter login password "<password>"
     And I click login button
     Then I should stay on login page with error message
 
+    Examples:
+      | email          | password        |
+      | hk18@gmail.com | WrongPass123    |
+
+
   @UI
-  Scenario: Login with empty email
+  Scenario Outline: Login with empty email
     Given I am on login page
-    When I enter login email ""
-    And I enter login password "Hari@0577"
+    When I enter login email "<email>"
+    And I enter login password "<password>"
     And I click login button
     Then I should see email validation error
 
+    Examples:
+      | email | password   |
+      |       | Hari@0577  |
+
 
   @UI
-  Scenario: Login with empty password
+  Scenario Outline: Login with empty password
     Given I am on login page
-    When I enter login email "hk18@gmail.com"
-    And I enter login password ""
+    When I enter login email "<email>"
+    And I enter login password "<password>"
     And I click login button
     Then I should see password validation error
+
+    Examples:
+      | email          | password |
+      | hk18@gmail.com |          |

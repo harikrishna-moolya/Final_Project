@@ -1,36 +1,64 @@
-
 package ui.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import utils.ConfigReader;
 
-public class DriverFactory {
+public final class DriverFactory {
 
-    private static WebDriver driver;
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+    private DriverFactory() {
+        // utility class
+    }
 
     public static WebDriver getDriver() {
 
-        if (driver == null) {
-            WebDriverManager.chromedriver().setup();
+        if (driver.get() == null) {
 
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--incognito");
-            options.addArguments("--start-maximized");
+            String browser = ConfigReader.get("browser");
 
-            driver = new ChromeDriver(options);
+            if (browser == null || browser.isEmpty()) {
+                browser = "chrome";
+            }
+
+            switch (browser.toLowerCase()) {
+
+                case "firefox":
+                    WebDriverManager.firefoxdriver().setup();
+                    driver.set(new FirefoxDriver());
+                    break;
+
+                case "edge":
+                    WebDriverManager.edgedriver().setup();
+                    driver.set(new EdgeDriver());
+                    break;
+
+                case "chrome":
+                default:
+                    WebDriverManager.chromedriver().setup();
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--incognito");
+                    options.addArguments("--start-maximized");
+                    driver.set(new ChromeDriver(options));
+                    break;
+            }
         }
-        return driver;
+        return driver.get();
     }
 
-    // ⭐ UNIVERSAL AD REMOVER (GLOBAL FIX)
+    // ⭐ UNIVERSAL AD REMOVER (UNCHANGED)
     public static void removeAds(WebDriver driver) {
         try {
             JavascriptExecutor js = (JavascriptExecutor) driver;
 
             js.executeScript(
-                    "document.querySelectorAll('iframe, .adsbygoogle, #ad_position_box, .modal-backdrop, #aswift_0, #aswift_1, .popup').forEach(e => e.remove());"
+                    "document.querySelectorAll('iframe, .adsbygoogle, #ad_position_box, .modal-backdrop, #aswift_0, #aswift_1, .popup')" +
+                            ".forEach(e => e.remove());"
             );
 
             js.executeScript(
@@ -41,9 +69,9 @@ public class DriverFactory {
     }
 
     public static void quitDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+        if (driver.get() != null) {
+            driver.get().quit();
+            driver.remove();
         }
     }
 }

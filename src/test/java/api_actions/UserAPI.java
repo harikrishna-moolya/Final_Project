@@ -1,6 +1,6 @@
 package api_actions;
 
-import base.RequestSpec;
+import utils.RequestSpec;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
