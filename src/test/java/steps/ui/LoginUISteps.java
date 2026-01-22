@@ -1,28 +1,4 @@
-/*
-package steps.ui;
 
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.testng.Assert;
-import ui.driver.DriverFactory;
-import ui.pages.LoginPage;
-
-public class LoginUISteps {
-
-    LoginPage login = new LoginPage(DriverFactory.getDriver());
-
-    @When("I login using email {string} and password {string}")
-    public void login(String email, String password) {
-        login.login(email, password);
-    }
-    @Then("I should stay on login page with error message")
-    public void stayOnLoginPageWithError() {
-        LoginPage login = new LoginPage(DriverFactory.getDriver());
-        Assert.assertTrue(login.isLoginErrorDisplayed(), "Error message not shown!");
-    }
-
-}
-*/
 package steps.ui;
 
 import io.cucumber.java.en.*;
